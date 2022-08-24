@@ -8,8 +8,9 @@ namespace RandomPasswordGenerator
         {
             while(true)
             {
-                Console.WriteLine(Password.Get());
-                Console.ReadKey();
+                Console.Write("Укажите длину пароля: ");
+                string passLength = Console.ReadLine();
+                Console.WriteLine(Password.Get(passLength) + Environment.NewLine);
             }
         }
     }

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RandomPasswordGenerator
 {
     public static class Password
     {
+
         private static string[] symbols = {
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=",
@@ -19,11 +16,26 @@ namespace RandomPasswordGenerator
             "Z", "X", "C", "V", "B", "N", "M", "<", ">"
         };
 
-        public static string Get()
+        public static string Get(string inp)
         {
             string answer = "";
+            int length;
 
-            for (int i = 0; i < 25; i++)
+            try
+            {
+                length = Convert.ToInt32(inp);
+            }
+            catch
+            {
+                return null;
+            }
+
+            if (length < 1)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < length; i++)
             {
                 Random rand = new Random();
                 int symbolNum = rand.Next(0, symbols.Length);
